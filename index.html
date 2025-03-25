@@ -3,10 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="МеняйКа! - Играй, собирай и меняй игрушки из автоматов-хватаек на крутые призы!" />
     <meta name="keywords" content="автоматы-хватайки, обмен игрушек, призы, игрушки, меняйка" />
     <meta name="theme-color" content="#220066" />
+    
+    <!-- Предзагрузка шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Оптимизированная загрузка шрифта -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Резервные стили для обеспечения единообразия шрифтов -->
+    <style>
+      /* Принудительное применение шрифта ко всему содержимому */
+      html, body {
+        font-family: 'Baloo 2', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Принудительное применение шрифта к важным элементам */
+      h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea, select, li {
+        font-family: 'Baloo 2', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
+      }
+    </style>
+    
     <title>МеняйКа! - Играй, собирай и меняй!</title>
   </head>
   <body>
