@@ -1,0 +1,72 @@
+/* Мобильные запасные стили - используют системные шрифты */
+
+/* Общие стили для всех устройств */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Системные шрифты для мобильных */
+  @media (max-width: 768px) {
+    body, html, button, input, textarea, select, div, span, p, h1, h2, h3, h4, h5, h6, a, li {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+    }
+  
+    h1, .gradient-title {
+      font-size: 2.5rem !important;
+      line-height: 1.2 !important;
+      font-weight: 800 !important;
+    }
+  
+    h2 {
+      font-size: 2rem !important;
+      line-height: 1.2 !important;
+      font-weight: 700 !important;
+    }
+  
+    h3 {
+      font-size: 1.5rem !important;
+      line-height: 1.3 !important;
+      font-weight: 600 !important;
+    }
+  
+    p, span, a {
+      font-size: 1rem !important;
+      line-height: 1.4 !important;
+    }
+  
+    /* Отключение анимаций для лучшей производительности */
+    * {
+      -webkit-transition: none !important;
+      transition: none !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* iOS специфические стили */
+  @supports (-webkit-touch-callout: none) {
+    body, html, button, input, textarea, select, div, span, p, h1, h2, h3, h4, h5, h6, a, li {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    }
+  }
+  
+  /* Android специфические стили */
+  @supports (-webkit-appearance:none) and (not (-webkit-touch-callout:none)) {
+    body, html, button, input, textarea, select, div, span, p, h1, h2, h3, h4, h5, h6, a, li {
+      font-family: Roboto, "Noto Sans", sans-serif !important;
+    }
+  }
+  

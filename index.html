@@ -7,105 +7,204 @@
     <meta name="description" content="МеняйКа! - Играй, собирай и меняй игрушки из автоматов-хватаек на крутые призы!" />
     <meta name="keywords" content="автоматы-хватайки, обмен игрушек, призы, игрушки, меняйка" />
     <meta name="theme-color" content="#220066" />
-    
-    <!-- Оптимизация загрузки шрифтов -->
+
+    <!-- Оптимизация шрифтов с многоуровневой стратегией -->
+    <!-- 1. Локальные шрифты -->
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <!-- 2. Запасной вариант с системными шрифтами -->
+    <link rel="stylesheet" href="./mobile-fallback.css">
+    <!-- 3. Google Fonts как последний запасной вариант -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap">
-    
+
     <title>МеняйКа! - Играй, собирай и меняй!</title>
-    
-    <!-- Встроенные стили для мобильных устройств -->
+
+    <script>
+      // Проверка загрузки шрифтов и установка класса
+      document.addEventListener('DOMContentLoaded', function() {
+        // Добавляем класс для применения стилей после загрузки шрифтов
+        setTimeout(function() {
+          document.documentElement.classList.add('fonts-loaded');
+        }, 100);
+      });
+    </script>
+
     <style>
-      /* Reset CSS */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
+      /* Базовые стили, перезаписывающие другие CSS */
+      html.fonts-loaded body,
+      html.fonts-loaded button,
+      html.fonts-loaded input,
+      html.fonts-loaded textarea,
+      html.fonts-loaded select,
+      html.fonts-loaded div,
+      html.fonts-loaded span,
+      html.fonts-loaded p,
+      html.fonts-loaded h1,
+      html.fonts-loaded h2,
+      html.fonts-loaded h3,
+      html.fonts-loaded h4,
+      html.fonts-loaded h5,
+      html.fonts-loaded h6,
+      html.fonts-loaded a,
+      html.fonts-loaded li {
+        font-family: 'Baloo 2', system-ui, sans-serif !important;
       }
 
-      /* Прямые объявления font-face */
-      @font-face {
-        font-family: 'Baloo 2';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/baloo2/v16/wXKrE3kTposypRyd51jcAA.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      /* Если шрифты не загрузятся, используем системные */
+      body, button, input, textarea, select, div, span, p, h1, h2, h3, h4, h5, h6, a, li {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
       }
 
-      @font-face {
-        font-family: 'Baloo 2';
-        font-style: normal;
-        font-weight: 700;
-        font-display: swap;
-        src: url(https://fonts.gstatic.com/s/baloo2/v16/wXKuE3kTposypRyd53-jU30K.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      /* Базовые стили */
-      html, body {
-        font-family: 'Baloo 2', sans-serif !important;
-        font-display: swap;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-      }
-
-      body, html, button, input, textarea, select {
-        font-family: 'Baloo 2', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      /* iOS Safari */
+      @supports (-webkit-touch-callout: none) {
+        html.fonts-loaded body,
+        html.fonts-loaded button,
+        html.fonts-loaded input,
+        html.fonts-loaded textarea,
+        html.fonts-loaded select,
+        html.fonts-loaded div,
+        html.fonts-loaded span,
+        html.fonts-loaded p,
+        html.fonts-loaded h1,
+        html.fonts-loaded h2,
+        html.fonts-loaded h3,
+        html.fonts-loaded h4,
+        html.fonts-loaded h5,
+        html.fonts-loaded h6,
+        html.fonts-loaded a,
+        html.fonts-loaded li {
+          font-family: 'Baloo 2', -apple-system, BlinkMacSystemFont, sans-serif !important;
+          -webkit-font-smoothing: antialiased;
+        }
       }
 
       /* Мобильные устройства */
       @media screen and (max-width: 768px) {
-        html, body {
-          font-size: 16px !important;
-          line-height: 1.4 !important;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          text-rendering: optimizeLegibility;
-        }
-
-        h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, li, div {
-          font-family: 'Baloo 2', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-          letter-spacing: -0.02em;
-        }
-
         h1, .gradient-title {
           font-size: 2.5rem !important;
           line-height: 1.2 !important;
+          font-weight: 800 !important;
         }
 
         h2 {
           font-size: 2rem !important;
           line-height: 1.2 !important;
+          font-weight: 700 !important;
         }
 
         h3 {
           font-size: 1.5rem !important;
           line-height: 1.3 !important;
-        }
-
-        p, span, a {
-          font-size: 1rem !important;
-          line-height: 1.4 !important;
+          font-weight: 600 !important;
         }
       }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="МеняйКа! - Играй, собирай и меняй игрушки из автоматов-хватаек на крутые призы!" />
+    <meta name="keywords" content="автоматы-хватайки, обмен игрушек, призы, игрушки, меняйка" />
+    <meta name="theme-color" content="#220066" />
 
-      /* Коррекция для iOS Safari */
+    <!-- Оптимизация шрифтов с многоуровневой стратегией -->
+    <!-- 1. Локальные шрифты -->
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <!-- 2. Запасной вариант с системными шрифтами -->
+    <link rel="stylesheet" href="./mobile-fallback.css">
+    <!-- 3. Google Fonts как последний запасной вариант -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap">
+
+    <title>МеняйКа! - Играй, собирай и меняй!</title>
+
+    <script>
+      // Проверка загрузки шрифтов и установка класса
+      document.addEventListener('DOMContentLoaded', function() {
+        // Добавляем класс для применения стилей после загрузки шрифтов
+        setTimeout(function() {
+          document.documentElement.classList.add('fonts-loaded');
+        }, 100);
+      });
+    </script>
+
+    <style>
+      /* Базовые стили, перезаписывающие другие CSS */
+      html.fonts-loaded body,
+      html.fonts-loaded button,
+      html.fonts-loaded input,
+      html.fonts-loaded textarea,
+      html.fonts-loaded select,
+      html.fonts-loaded div,
+      html.fonts-loaded span,
+      html.fonts-loaded p,
+      html.fonts-loaded h1,
+      html.fonts-loaded h2,
+      html.fonts-loaded h3,
+      html.fonts-loaded h4,
+      html.fonts-loaded h5,
+      html.fonts-loaded h6,
+      html.fonts-loaded a,
+      html.fonts-loaded li {
+        font-family: 'Baloo 2', system-ui, sans-serif !important;
+      }
+
+      /* Если шрифты не загрузятся, используем системные */
+      body, button, input, textarea, select, div, span, p, h1, h2, h3, h4, h5, h6, a, li {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+
+      /* iOS Safari */
       @supports (-webkit-touch-callout: none) {
-        body {
+        html.fonts-loaded body,
+        html.fonts-loaded button,
+        html.fonts-loaded input,
+        html.fonts-loaded textarea,
+        html.fonts-loaded select,
+        html.fonts-loaded div,
+        html.fonts-loaded span,
+        html.fonts-loaded p,
+        html.fonts-loaded h1,
+        html.fonts-loaded h2,
+        html.fonts-loaded h3,
+        html.fonts-loaded h4,
+        html.fonts-loaded h5,
+        html.fonts-loaded h6,
+        html.fonts-loaded a,
+        html.fonts-loaded li {
+          font-family: 'Baloo 2', -apple-system, BlinkMacSystemFont, sans-serif !important;
           -webkit-font-smoothing: antialiased;
-          font-family: 'Baloo 2', -apple-system, BlinkMacSystemFont, system-ui !important;
         }
       }
 
-      /* Коррекция для Android Chrome */
-      @supports (-webkit-appearance:none) and (not (-webkit-touch-callout:none)) {
-        body {
-          font-family: 'Baloo 2', Roboto, system-ui !important;
+      /* Мобильные устройства */
+      @media screen and (max-width: 768px) {
+        h1, .gradient-title {
+          font-size: 2.5rem !important;
+          line-height: 1.2 !important;
+          font-weight: 800 !important;
+        }
+
+        h2 {
+          font-size: 2rem !important;
+          line-height: 1.2 !important;
+          font-weight: 700 !important;
+        }
+
+        h3 {
+          font-size: 1.5rem !important;
+          line-height: 1.3 !important;
+          font-weight: 600 !important;
         }
       }
     </style>
