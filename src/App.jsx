@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import VideoSection from './components/VideoSection'
 import Gallery from './components/Gallery'
 import SocialLinks from './components/SocialLinks'
 import Footer from './components/Footer'
 import Stars from './components/Stars'
+import FontPreloader from './components/FontPreloader'
 import './App.scss'
 
 // Компонент боковой машины с игрушками
@@ -54,16 +56,31 @@ const FloatingCoin = ({ style }) => (
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  const [fontsLoaded, setFontsLoaded] = useState(false)
 
   useEffect(() => {
     // Имитация загрузки
     setTimeout(() => {
       setIsLoading(false)
     }, 1500)
+
+    // Проверка загрузки шрифтов
+    const checkFontsLoaded = () => {
+      if (document.body.classList.contains('fonts-loaded')) {
+        setFontsLoaded(true)
+      } else {
+        setTimeout(checkFontsLoaded, 100)
+      }
+    }
+
+    setTimeout(checkFontsLoaded, 200)
   }, [])
 
   return (
     <>
+      {/* Компонент для предзагрузки шрифтов */}
+      <FontPreloader />
+
       {isLoading ? (
         <div className="loading-screen">
           <div className="claw-loader">
@@ -76,7 +93,7 @@ function App() {
           <h2 className="loading-text">Загрузка...</h2>
         </div>
       ) : (
-        <div className="app-container">
+        <div className={`app-container ${fontsLoaded ? 'fonts-ready' : ''}`}>
           <Stars />
 
           {/* Декоративные элементы по всей странице */}
@@ -96,6 +113,7 @@ function App() {
           <Header />
           <main>
             <Hero />
+            <VideoSection />
             <Gallery />
             <SocialLinks />
           </main>
