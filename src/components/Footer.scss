@@ -205,10 +205,10 @@
 
 @keyframes footerClawMoveLeft {
   0%, 100% { transform: rotate(-10deg); }
-  50% { transform: rotate(5deg); }
+  50% { transform: rotate(15deg); }
 }
 
 @keyframes footerClawMoveRight {
   0%, 100% { transform: rotate(10deg); }
-  50% { transform: rotate(-5deg); }
+  50% { transform: rotate(-15deg); }
 }
