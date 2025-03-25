@@ -115,7 +115,7 @@ const Gallery = () => {
   return (
     <section className="gallery-section" id="gallery">
       <div className="container">
-        <h2 className="section-title gradient-title">    ПРИЗЫ</h2>
+        <h2 className="section-title gradient-title">ПРИЗЫ</h2>
         <p className="section-description">
           Смотрите, какие игрушки и призы можно выиграть и обменять в наших автоматах!
         </p>

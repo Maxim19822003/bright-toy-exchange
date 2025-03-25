@@ -20,11 +20,15 @@
   .section-title {
     font-size: 2.5rem;
     font-weight: 800;
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.5));
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .section-description {
