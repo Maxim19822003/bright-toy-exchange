@@ -64,16 +64,17 @@ const SocialLinks = () => {
               <div className="frame-decoration bottom-right"></div>
               
               <div className="video-wrapper">
-                <video 
-                  className="exchange-video" 
-                  controls
-                  loop
-                  playsInline
-                  poster="/bright-toy-exchange/vite.svg"
-                >
-                  <source src="/bright-toy-exchange/videos/exchange-video.mp4" type="video/mp4" />
-                  Ваш браузер не поддерживает видео.
-                </video>
+              <video 
+  className="exchange-video" 
+  autoPlay    // Добавляем для автоматического воспроизведения
+  muted       // Добавляем, т.к. браузеры требуют muted для автовоспроизведения
+  loop        // Оставляем для зацикливания
+  playsInline // Оставляем для мобильных устройств
+  poster="/bright-toy-exchange/vite.svg"
+>
+  <source src="/bright-toy-exchange/videos/exchange-video.mp4" type="video/mp4" />
+  Ваш браузер не поддерживает видео.
+</video>
               </div>
             </div>
           </div>
