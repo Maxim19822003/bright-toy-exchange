@@ -12,8 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Оптимизированная загрузка шрифта -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Оптимизированная загрузка шрифта с дополнительным параметром text-rendering -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&text=абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&display=swap" rel="stylesheet">
+    
+    <!-- Дополнительная специальная версия для мобильных устройств -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&text=абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&display=block" 
+      rel="stylesheet" 
+      media="only screen and (max-width: 768px)">
     
     <!-- Резервные стили для обеспечения единообразия шрифтов -->
     <style>
@@ -22,16 +28,27 @@
         font-family: 'Baloo 2', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
       
       /* Принудительное применение шрифта к важным элементам */
       h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea, select, li {
         font-family: 'Baloo 2', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
       }
+      
+      /* Дополнительное правило для мобильных устройств */
+      @media (max-width: 768px) {
+        html, body, * {
+          font-family: 'Baloo 2', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
+          letter-spacing: -0.02em;
+        }
+      }
     </style>
     
     <title>МеняйКа! - Играй, собирай и меняй!</title>
-
+    
   </head>
   <body>
     <div id="root"></div>
