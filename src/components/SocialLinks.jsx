@@ -54,20 +54,27 @@ const SocialLinks = () => {
             </a>
           </div>
 
-          <div className="toy-exchange-info">
-            <div className="exchange-icon">
-              <div className="exchange-icon-left"></div>
-              <div className="exchange-icon-right"></div>
-            </div>
-
-            <div className="exchange-content">
-              <h3>Как происходит обмен</h3>
-              <ol>
-                <li>Выиграй игрушки в наших автоматах</li>
-                <li>Свяжись с оператором по обмену</li>
-                <li>Выбери приз</li>
-                <li>Приходи к аппарату с игрушками для обмена</li>
-              </ol>
+          {/* Заменяем блок toy-exchange-info на новый с видео */}
+          <div className="exchange-video-container">
+            <h3 className="exchange-video-title">Как происходит обмен</h3>
+            <div className="video-frame">
+              <div className="frame-decoration top-left"></div>
+              <div className="frame-decoration top-right"></div>
+              <div className="frame-decoration bottom-left"></div>
+              <div className="frame-decoration bottom-right"></div>
+              
+              <div className="video-wrapper">
+                <video 
+                  className="exchange-video" 
+                  controls
+                  loop
+                  playsInline
+                  poster="/bright-toy-exchange/vite.svg"
+                >
+                  <source src="/bright-toy-exchange/videos/exchange-video.mp4" type="video/mp4" />
+                  Ваш браузер не поддерживает видео.
+                </video>
+              </div>
             </div>
           </div>
         </div>
