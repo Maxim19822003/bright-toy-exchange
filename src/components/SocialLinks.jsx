@@ -18,7 +18,7 @@ const SocialLinks = () => {
 
           <div className="social-links-buttons">
             <a
-              href="https://t.me/"
+              href="https://t.me/srazu_igra"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link telegram-link"
@@ -36,7 +36,7 @@ const SocialLinks = () => {
             </a>
 
             <a
-              href="https://vk.com/"
+              href="https://vk.com/obmen_igrushek_kaluga"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link vk-link"
