@@ -1,0 +1,287 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Загрузочный экран с анимацией клешни */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-text {
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: #fff;
+  font-weight: 700;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(110, 255, 0, 0.5));
+}
+
+.claw-loader {
+  position: relative;
+  width: 200px;
+  height: 250px;
+
+  .claw-base {
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(255, 0, 229, 0.5);
+  }
+
+  .claw-arm {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--neon-pink), var(--neon-blue));
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
+    animation: armMove 2s infinite;
+  }
+
+  .claw-grip {
+    position: absolute;
+    width: 15px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--neon-blue), var(--neon-green));
+    top: 115px;
+    box-shadow: 0 0 10px rgba(110, 255, 0, 0.5);
+
+    &.left {
+      left: 50%;
+      transform: translateX(-50%) rotate(-30deg);
+      transform-origin: top center;
+      border-radius: 0 0 10px 10px;
+      animation: leftGripMove 2s infinite;
+    }
+
+    &.right {
+      left: 50%;
+      transform: translateX(-50%) rotate(30deg);
+      transform-origin: top center;
+      border-radius: 0 0 10px 10px;
+      animation: rightGripMove 2s infinite;
+    }
+  }
+
+  .toy-being-grabbed {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--neon-yellow);
+    left: 50%;
+    top: 140px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 238, 0, 0.7);
+    animation: toyMove 2s infinite;
+  }
+}
+
+@keyframes armMove {
+  0%, 100% {
+    height: 100px;
+  }
+  50% {
+    height: 150px;
+  }
+}
+
+@keyframes leftGripMove {
+  0%, 100% {
+    transform: translateX(-50%) translateX(-15px) rotate(-30deg);
+  }
+  50% {
+    transform: translateX(-50%) translateX(-25px) rotate(-15deg);
+  }
+}
+
+@keyframes rightGripMove {
+  0%, 100% {
+    transform: translateX(-50%) translateX(15px) rotate(30deg);
+  }
+  50% {
+    transform: translateX(-50%) translateX(25px) rotate(15deg);
+  }
+}
+
+@keyframes toyMove {
+  0%, 100% {
+    top: 140px;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    top: 180px;
+    transform: translateX(-50%) scale(0.8);
+  }
+}
+
+// Floating coins
+.floating-coin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ffdc00, #ffa700);
+  box-shadow: 0 0 15px rgba(255, 220, 0, 0.8);
+  z-index: 1;
+  animation: float 3s infinite ease-in-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Add more decorative elements throughout the page
+.decorative-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+// Side claw machines
+.side-claw-machine {
+  position: fixed;
+  width: 180px;
+  height: 300px;
+  background: rgba(255, 0, 229, 0.2);
+  border: 2px solid rgba(255, 0, 229, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 229, 0.3);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &.left {
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-5deg);
+    transform-origin: right center;
+  }
+
+  &.right {
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(5deg);
+    transform-origin: left center;
+  }
+
+  .machine-glass {
+    flex: 1;
+    background: rgba(20, 20, 40, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 10px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.1) 100%);
+      pointer-events: none;
+    }
+  }
+
+  .machine-bottom {
+    height: 70px;
+    background: rgba(40, 10, 80, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-top: 2px solid rgba(255, 0, 229, 0.5);
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .control {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, #ffee00, #ff8800);
+        box-shadow: 0 0 10px rgba(255, 238, 0, 0.5);
+      }
+    }
+
+    .prize-slot {
+      width: 60%;
+      height: 20px;
+      background: rgba(10, 10, 40, 0.8);
+      border-radius: 5px;
+      margin-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Animation for floating elements
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+// Animation for glowing effect
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 229, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 229, 0.8);
+  }
+}

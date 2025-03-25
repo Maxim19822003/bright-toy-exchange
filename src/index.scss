@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Основные неоновые цвета */
+  --neon-green: #6eff00;
+  --neon-pink: #ff00e5;
+  --neon-yellow: #ffee00;
+  --neon-blue: #00ffff;
+
+  /* Фоновые цвета */
+  --dark-bg: #220066;
+  --darker-bg: #13003a;
+
+  /* Градиенты */
+  --primary-gradient: linear-gradient(to right, var(--neon-green), var(--neon-yellow));
+  --secondary-gradient: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+  --title-gradient: linear-gradient(to right, var(--neon-green), var(--neon-blue), var(--neon-pink));
+
+  /* Тени */
+  --neon-shadow-green: 0 0 15px rgba(110, 255, 0, 0.7);
+  --neon-shadow-pink: 0 0 15px rgba(255, 0, 229, 0.7);
+  --neon-shadow-yellow: 0 0 15px rgba(255, 238, 0, 0.7);
+
+  /* Скругления */
+  --border-radius-sm: 10px;
+  --border-radius-md: 20px;
+  --border-radius-lg: 30px;
+  --border-radius-xl: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+  background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Утилиты и общие стили */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Неоновые кнопки */
+.neon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius-xl);
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    filter: brightness(1.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.neon-button-primary {
+  background: var(--primary-gradient);
+  box-shadow: var(--neon-shadow-green);
+
+  &:hover {
+    box-shadow: 0 0 25px rgba(110, 255, 0, 0.9);
+  }
+}
+
+.neon-button-secondary {
+  background: var(--secondary-gradient);
+  box-shadow: var(--neon-shadow-pink);
+
+  &:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 229, 0.9);
+  }
+}
+
+/* Градиентные заголовки */
+.gradient-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(110, 255, 0, 0.5));
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Звездочки и блестки */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .gradient-title {
+    font-size: 3.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gradient-title {
+    font-size: 3rem;
+  }
+
+  .neon-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gradient-title {
+    font-size: 2.5rem;
+  }
+
+  .neon-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

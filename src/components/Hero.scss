@@ -1,0 +1,824 @@
+.hero {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 255, 136, 0.2) 0%, rgba(35, 10, 89, 0) 70%);
+    pointer-events: none;
+  }
+
+  // Лучи в фоне
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(135deg, transparent 0%, rgba(0, 255, 136, 0.1) 50%, transparent 100%),
+      linear-gradient(45deg, transparent 0%, rgba(0, 255, 136, 0.1) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+
+// Висящие клешни
+.hanging-claws-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 5;
+}
+
+.hanging-claw-element {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  z-index: 5;
+
+  .claw-rope {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(to bottom, #888, #aaa);
+    transform: translateX(-50%);
+  }
+
+  .claw-head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    height: 10px;
+    background: rgba(20, 20, 40, 0.8);
+    border: 2px solid;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
+  }
+
+  .claw-arm {
+    position: absolute;
+    top: 8px;
+    width: 8px;
+    height: 35px;
+    border: 2px solid;
+    border-top: none;
+    box-shadow: 0 0 8px rgba(255, 0, 229, 0.3);
+    transition: transform 1.5s ease; // Добавляем плавный переход для анимации
+
+    &.claw-arm-left {
+      left: 15px;
+      border-radius: 0 0 0 20px;
+      border-right: none;
+      transform: rotate(-10deg);
+      transform-origin: top left;
+    }
+
+    &.claw-arm-right {
+      right: 15px;
+      border-radius: 0 0 20px 0;
+      border-left: none;
+      transform: rotate(10deg);
+      transform-origin: top right;
+    }
+  }
+  
+  // Клешня внутри аппарата
+.machine-claw {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 60px;
+  z-index: 3; 
+  pointer-events: none; 
+  
+  .claw-rope {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 3px;
+    height: 30px;
+    background: linear-gradient(to bottom, #888, #aaa);
+    transform: translateX(-50%);
+  }
+  
+  .claw-head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 8px;
+    background: rgba(20, 20, 40, 0.8);
+    border: 2px solid var(--neon-pink);
+    border-radius: 4px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px rgba(255, 0, 229, 0.5);
+  }
+  
+  .claw-arm {
+    position: absolute;
+    top: 6px;
+    width: 6px;
+    height: 25px;
+    border: 2px solid var(--neon-pink);
+    border-top: none;
+    box-shadow: 0 0 6px rgba(255, 0, 229, 0.3);
+    transition: transform 1.5s ease;
+    
+    &.claw-arm-left {
+      left: 10px;
+      border-radius: 0 0 0 15px;
+      border-right: none;
+      transform: rotate(-10deg);
+      transform-origin: top left;
+    }
+    
+    &.claw-arm-right {
+      right: 10px;
+      border-radius: 0 0 15px 0;
+      border-left: none;
+      transform: rotate(10deg);
+      transform-origin: top right;
+    }
+  }
+  
+  &.open {
+    .claw-arm-left {
+      transform: rotate(-30deg);
+    }
+    
+    .claw-arm-right {
+      transform: rotate(30deg);
+    }
+  }
+  
+  &.closed {
+    .claw-arm-left {
+      transform: rotate(-10deg);
+    }
+    
+    .claw-arm-right {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+  // Добавляем классы для открытой и закрытой клешни
+  &.open {
+    .claw-arm-left {
+      transform: rotate(-30deg);
+    }
+    
+    .claw-arm-right {
+      transform: rotate(30deg);
+    }
+  }
+  
+  &.closed {
+    .claw-arm-left {
+      transform: rotate(-10deg);
+    }
+    
+    .claw-arm-right {
+      transform: rotate(10deg);
+    }
+  }
+}
+// Игрушки вокруг
+.floating-toys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+
+  .toy {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: floatAround 15s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+    &.toy-star {
+      width: 45px;
+      height: 45px;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    &.toy-1 {
+      top: 15%;
+      left: 15%;
+      background: #ffee00;
+      animation-delay: 0s;
+    }
+
+    &.toy-2 {
+      top: 10%;
+      right: 20%;
+      background: #ff00e5;
+      animation-delay: 2s;
+    }
+
+    &.toy-3 {
+      top: 60%;
+      left: 8%;
+      background: #00ffff;
+      animation-delay: 1s;
+    }
+
+    &.toy-4 {
+      top: 70%;
+      right: 12%;
+      background: #6eff00;
+      animation-delay: 3s;
+    }
+
+    &.toy-5 {
+      top: 30%;
+      left: 75%;
+      background: #ffee00;
+      animation-delay: 4s;
+    }
+
+    &.toy-star-1 {
+      top: 20%;
+      left: 25%;
+      background: #ffee00;
+      animation-delay: 2.5s;
+    }
+
+    &.toy-star-2 {
+      top: 50%;
+      right: 18%;
+      background: #ff00e5;
+      animation-delay: 1.5s;
+    }
+
+    .toy-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: black;
+        border-radius: 50%;
+        top: 12px;
+      }
+
+      &::before {
+        left: 8px;
+      }
+
+      &::after {
+        right: 8px;
+      }
+
+      .toy-mouth {
+        position: absolute;
+        width: 16px;
+        height: 8px;
+        border-radius: 0 0 8px 8px;
+        background: black;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+.hero-content {
+  max-width: 600px;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+.hero-description {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-actions {
+  margin-top: 2rem;
+}
+
+.hero-actions .neon-button {
+  font-size: 1.2rem;
+  padding: 0.8rem 2.5rem;
+  border-radius: 50px;
+  background: linear-gradient(to right, #6eff00, #b4ff00);
+  box-shadow: 0 0 20px rgba(110, 255, 0, 0.7);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+}
+
+/* Центральная клешня - скрыта на десктопе */
+.hero-claw-image {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 1rem 0;
+  display: none; /* Скрываем на десктопе */
+}
+
+/* Центральное видео - скрыто на десктопе */
+.hero-video-center {
+  width: 100%;
+  max-width: 250px;
+  height: 300px;
+  margin: 20px auto;
+  display: none; /* Скрыто на десктопе */
+}
+
+/* Видео аппараты */
+.video-machine {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &-left, &-right, &-center {
+    background: linear-gradient(to bottom, #ff66ff, #ff00dd);
+    box-shadow: 0 0 20px rgba(255, 0, 229, 0.5);
+  }
+  
+  &-left {
+    border-radius: 20px 5px 5px 20px;
+    box-shadow: -5px 0 20px rgba(255, 0, 229, 0.5);
+  }
+
+  &-right {
+    border-radius: 5px 20px 20px 5px;
+    box-shadow: 5px 0 20px rgba(255, 0, 229, 0.5);
+  }
+  
+  &-center {
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 229, 0.7);
+  }
+}
+
+.machine-top {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .machine-light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--neon-yellow);
+    box-shadow: 0 0 15px var(--neon-yellow);
+    animation: blink 2s infinite alternate;
+  }
+}
+
+.machine-body {
+  flex: 1;
+  padding: 10px;
+
+  .machine-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+
+    // Видео внутри аппарата
+    .machine-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      position: relative;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.1) 100%);
+      pointer-events: none;
+      z-index: 2; // Поверх видео
+    }
+  }
+}
+
+.machine-bottom {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+
+  .control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 40px;
+
+    .joystick {
+      width: 20px;
+      height: 20px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: black;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .button {
+      width: 25px;
+      height: 25px;
+      background: var(--neon-pink);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
+    }
+  }
+
+  .prize-slot {
+    height: 30px;
+    margin: 5px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+  }
+}
+
+// Автомат внизу героя - скрыт на десктопе
+.bottom-machine {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 250px;
+  z-index: 2;
+  display: none; /* Скрываем на десктопе */
+
+  .machine-body {
+    width: 100%;
+    height: 100%;
+    background: #ff00dd;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 0, 221, 0.7);
+    overflow: hidden;
+
+    .machine-glass {
+      width: 90%;
+      height: 70%;
+      margin: 5% auto 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+
+      .claw-rope {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 2px;
+        height: 60%;
+        background: #ccc;
+        transform: translateX(-50%);
+      }
+
+      .machine-toy {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        animation: machineToyFloat 3s infinite ease-in-out;
+
+        &.toy-1 {
+          top: 30%;
+          left: 30%;
+          background: var(--neon-green);
+          animation-delay: 0s;
+        }
+
+        &.toy-2 {
+          top: 50%;
+          left: 60%;
+          background: var(--neon-blue);
+          animation-delay: 1s;
+        }
+
+        &.toy-3 {
+          top: 20%;
+          left: 60%;
+          background: var(--neon-yellow);
+          animation-delay: 2s;
+        }
+
+        &.toy-4 {
+          top: 60%;
+          left: 25%;
+          background: var(--neon-pink);
+          animation-delay: 1.5s;
+        }
+
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          background: black;
+          border-radius: 50%;
+          top: 6px;
+        }
+
+        &::before {
+          left: 5px;
+        }
+
+        &::after {
+          right: 5px;
+        }
+      }
+    }
+
+    .machine-control {
+      width: 100%;
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .control-button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--neon-green);
+        box-shadow: 0 0 15px rgba(110, 255, 0, 0.7);
+      }
+    }
+  }
+}
+
+/* Автоматы по бокам */
+.left-machine-wrapper,
+.right-machine-wrapper {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Монеты */
+.coin {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffee00, #ffc800);
+  box-shadow: 0 0 15px rgba(255, 238, 0, 0.7);
+  z-index: 2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.coin-left {
+    bottom: 100px;
+    left: 50px;
+    transform: rotate(20deg);
+  }
+
+  &.coin-right {
+    bottom: 120px;
+    right: 50px;
+    transform: rotate(-15deg);
+  }
+}
+
+/* Анимации */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, 15px) rotate(5deg);
+  }
+  50% {
+    transform: translate(0, 25px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-10px, 15px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes machineToyFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .left-machine-wrapper,
+  .right-machine-wrapper {
+    width: 200px;
+    height: 350px;
+  }
+
+  .hero-content {
+    max-width: 450px;
+  }
+
+  .hanging-claws .claw {
+    &.claw-1 {
+      left: 5%;
+    }
+
+    &.claw-2 {
+      left: 25%;
+    }
+
+    &.claw-3 {
+      right: 25%;
+    }
+
+    &.claw-4 {
+      right: 5%;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left-machine-wrapper,
+  .right-machine-wrapper {
+    width: 180px;
+    height: 300px;
+  }
+
+  .hero-content {
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .right-machine-wrapper {
+    display: none;
+  }
+
+  .hanging-claws {
+    display: none;
+  }
+
+  .floating-toys .toy {
+    width: 30px;
+    height: 30px;
+
+    &.toy-star {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  /* Показываем центральное видео на мобильных */
+  .hero-video-center {
+    display: block;
+  }
+  
+  .bottom-machine {
+    display: block;
+    width: 150px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .left-machine-wrapper {
+    display: none;
+  }
+
+  .hero-video-center {
+    width: 80%;
+    height: 250px;
+  }
+
+  .floating-toys .toy {
+    &.toy-1, &.toy-3 {
+      left: 5%;
+    }
+
+    &.toy-2, &.toy-4 {
+      right: 5%;
+    }
+  }
+
+  .coin {
+    width: 40px;
+    height: 40px;
+
+    &::before {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

@@ -1,0 +1,188 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 1rem 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &.scrolled {
+    background: rgba(19, 0, 58, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+
+    .logo-claw-icon {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  .gradient-text {
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 229, 0.5));
+  }
+}
+
+/* Стилизованная иконка клешни */
+.logo-claw-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.logo-claw-icon .claw-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.logo-claw-icon .claw-base {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 12px;
+  background: #6eff00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(110, 255, 0, 0.7);
+  animation: headerGlowPulse 2s infinite alternate;
+}
+
+.logo-claw-icon .claw-arm {
+  position: absolute;
+  top: 10px;
+  width: 8px;
+  height: 30px;
+  background: #6eff00;
+  box-shadow: 0 0 8px rgba(110, 255, 0, 0.5);
+  transition: transform 1.5s ease;
+}
+
+.logo-claw-icon .claw-arm.left {
+  left: 10px;
+  transform-origin: top center;
+  border-radius: 0 0 0 10px;
+  animation: headerClawMoveLeft 3s infinite ease-in-out;
+}
+
+.logo-claw-icon .claw-arm.right {
+  right: 10px;
+  transform-origin: top center;
+  border-radius: 0 0 10px 0;
+  animation: headerClawMoveRight 3s infinite ease-in-out;
+}
+
+/* Навигация */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-md);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+    border-radius: 3px;
+  }
+
+  &:hover {
+    color: var(--neon-yellow);
+
+    &::before {
+      width: 80%;
+    }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-list {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-list {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+  }
+}
+
+@keyframes headerGlowPulse {
+  0% { box-shadow: 0 0 5px rgba(110, 255, 0, 0.7); }
+  100% { box-shadow: 0 0 15px rgba(110, 255, 0, 1); }
+}
+
+@keyframes headerClawMoveLeft {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(-30deg); }
+}
+
+@keyframes headerClawMoveRight {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(30deg); }
+}
+
