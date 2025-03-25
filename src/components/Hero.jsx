@@ -42,13 +42,13 @@ const HangingClaw = ({ position, color = '#ff00e5', animationDelay = 0 }) => {
     if (isOpen) {
       // Открываем клешню
       gsap.to(leftArm, {
-        rotation: -5, // Увеличиваем угол для более заметной анимации
+        rotation: 5, // Увеличиваем угол для более заметной анимации
         duration: 1.5,
         ease: "power2.out"
       })
       
       gsap.to(rightArm, {
-        rotation: 5, // Увеличиваем угол для более заметной анимации
+        rotation: -5, // Увеличиваем угол для более заметной анимации
         duration: 1.5,
         ease: "power2.out"
       })
