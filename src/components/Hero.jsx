@@ -173,8 +173,8 @@ const Hero = () => {
   }, [])
 
   // Пути к видео
-  const video1 = '/videos/video1.mp4'; // Для левого и центрального (мобильного) аппарата
-  const video2 = '/videos/video2.mp4'; // Для правого аппарата
+const video1 = '/bright-toy-exchange/videos/video1.mp4'; // Для левого и центрального (мобильного) аппарата
+const video2 = '/bright-toy-exchange/videos/video2.mp4'; // Для правого аппарата
 
   return (
     <section className="hero" id="glavnaya">
