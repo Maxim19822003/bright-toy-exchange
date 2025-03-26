@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Header.scss'
+import { Link, useLocation } from 'react-router-dom';
 
 // Упрощенная версия клешни с HTML и CSS
 const ClawLogo = () => {

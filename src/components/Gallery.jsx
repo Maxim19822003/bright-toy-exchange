@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './Gallery.scss';
+import { Link } from 'react-router-dom';
 
 // Импортируем все шесть изображений из assets
 import toy1 from '../assets/toy1.jpg';

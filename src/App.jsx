@@ -9,6 +9,7 @@ import Stars from './components/Stars'
 import FontPreloader from './components/FontPreloader'
 import './App.scss'
 import PrizesPage from './pages/PrizesPage'
+import { Link } from 'react-router-dom';
 
 // Компонент боковой машины с игрушками
 const SideMachine = ({ side }) => {

@@ -1,42 +1,24 @@
-/* Локальное определение шрифтов */
+/* Используем Google Fonts вместо локальных шрифтов */
 @font-face {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Baloo 2 Regular'), local('Baloo2-Regular'), url('./baloo2-regular.woff2') format('woff2');
-  }
-  
-  @font-face {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local('Baloo 2 Bold'), local('Baloo2-Bold'), url('./baloo2-bold.woff2') format('woff2');
-  }
-  
-  /* Использовать тот же шрифт для всех весов */
-  @font-face {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: local('Baloo 2 Regular'), local('Baloo2-Regular'), url('./baloo2-regular.woff2') format('woff2');
-  }
-  
-  @font-face {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: local('Baloo 2 Bold'), local('Baloo2-Bold'), url('./baloo2-bold.woff2') format('woff2');
-  }
-  
-  @font-face {
-    font-family: 'Baloo 2';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: local('Baloo 2 Bold'), local('Baloo2-Bold'), url('./baloo2-bold.woff2') format('woff2');
-  }
-  
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/baloo2/v21/wXK0E3kTposypRydzVT08TS3JnAmtdj9yqpv.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/baloo2/v21/wXK0E3kTposypRydzVT08TS3JnAmtdiayqpv.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/baloo2/v21/wXK0E3kTposypRydzVT08TS3JnAmtdgozapv.woff2) format('woff2');
+}
