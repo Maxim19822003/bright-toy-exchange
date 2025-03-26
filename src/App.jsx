@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import VideoSection from './components/VideoSection'
@@ -8,6 +9,7 @@ import Footer from './components/Footer'
 import Stars from './components/Stars'
 import FontPreloader from './components/FontPreloader'
 import './App.scss'
+import PrizesPage from './pages/PrizesPage'
 
 // Компонент боковой машины с игрушками
 const SideMachine = ({ side }) => {
@@ -54,6 +56,49 @@ const FloatingCoin = ({ style }) => (
   />
 )
 
+// Компонент для отслеживания прокрутки при изменении маршрута
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// Домашняя страница
+const HomePage = () => {
+  return (
+    <>
+      <Stars />
+
+      {/* Декоративные элементы по всей странице */}
+      <div className="decorative-elements">
+        <FloatingCoin style={{ top: '15%', left: '8%' }} />
+        <FloatingCoin style={{ top: '25%', right: '12%' }} />
+        <FloatingCoin style={{ top: '65%', left: '5%' }} />
+        <FloatingCoin style={{ top: '85%', right: '7%' }} />
+        <FloatingCoin style={{ top: '45%', left: '15%' }} />
+        <FloatingCoin style={{ top: '75%', right: '18%' }} />
+      </div>
+
+      {/* Боковые автоматы с игрушками */}
+      <SideMachine side="left" />
+      <SideMachine side="right" />
+
+      <Header />
+      <main>
+        <Hero />
+        <VideoSection />
+        <Gallery />
+        <SocialLinks />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [fontsLoaded, setFontsLoaded] = useState(false)
@@ -77,7 +122,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <BrowserRouter basename="/bright-toy-exchange">
       {/* Компонент для предзагрузки шрифтов */}
       <FontPreloader />
 
@@ -94,33 +139,14 @@ function App() {
         </div>
       ) : (
         <div className={`app-container ${fontsLoaded ? 'fonts-ready' : ''}`}>
-          <Stars />
-
-          {/* Декоративные элементы по всей странице */}
-          <div className="decorative-elements">
-            <FloatingCoin style={{ top: '15%', left: '8%' }} />
-            <FloatingCoin style={{ top: '25%', right: '12%' }} />
-            <FloatingCoin style={{ top: '65%', left: '5%' }} />
-            <FloatingCoin style={{ top: '85%', right: '7%' }} />
-            <FloatingCoin style={{ top: '45%', left: '15%' }} />
-            <FloatingCoin style={{ top: '75%', right: '18%' }} />
-          </div>
-
-          {/* Боковые автоматы с игрушками */}
-          <SideMachine side="left" />
-          <SideMachine side="right" />
-
-          <Header />
-          <main>
-            <Hero />
-            <VideoSection />
-            <Gallery />
-            <SocialLinks />
-          </main>
-          <Footer />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/prizes" element={<PrizesPage />} />
+          </Routes>
         </div>
       )}
-    </>
+    </BrowserRouter>
   )
 }
 

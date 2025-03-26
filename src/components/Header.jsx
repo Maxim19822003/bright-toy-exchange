@@ -44,18 +44,24 @@ const Header = () => {
         </div>
 
         <nav>
-          <ul className="nav-list">
-            <li className="nav-item">
-              <a href="#glavnaya" className="nav-link">Главная</a>
-            </li>
-            <li className="nav-item">
-              <a href="#socials" className="nav-link">Обмен</a>
-            </li>
-            <li className="nav-item">
-              <a href="#contacts" className="nav-link">Контакты</a>
-            </li>
-          </ul>
-        </nav>
+  <ul className="nav-list">
+    <li className="nav-item">
+      <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        Главная
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/prizes" className={location.pathname === "/prizes" ? "nav-link active" : "nav-link"}>
+        Призы
+      </Link>
+    </li>
+    <li className="nav-item">
+      <Link to="/contacts" className={location.pathname === "/contacts" ? "nav-link active" : "nav-link"}>
+        Контакты
+      </Link>
+    </li>
+  </ul>
+</nav>
       </div>
     </header>
   )

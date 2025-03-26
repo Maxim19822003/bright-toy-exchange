@@ -127,6 +127,16 @@ const Gallery = () => {
           <GalleryItem index={4} imageSrc={toy4} altText="Игрушка 4" />
           <GalleryItem index={5} imageSrc={toy5} altText="Игрушка 5" />
           <GalleryItem index={6} imageSrc={toy6} altText="Игрушка 6" />
+          <div className="view-all-container">
+  <Link to="/prizes" className="view-all-btn neon-button-secondary">
+    <span className="btn-text">Все призы</span>
+    <span className="btn-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </span>
+  </Link>
+</div>
         </div>
       </div>
 
