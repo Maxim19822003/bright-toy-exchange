@@ -212,3 +212,20 @@
   0%, 100% { transform: rotate(10deg); }
   50% { transform: rotate(-25deg); }
 }
+
+.footer-contact a {
+  color: var(--neon-green);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--neon-blue);
+    text-decoration: underline;
+  }
+}
+
+.made-by {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

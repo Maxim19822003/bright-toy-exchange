@@ -34,8 +34,9 @@ const Footer = () => {
 
           <div className="footer-contact">
             <h3>Контакты</h3>
-            <p>Email: info@menyaika.ru</p>
-            <p>Телефон: +7 (900) 123-45-67</p>
+            <p>WhatsApp: <a href="https://api.whatsapp.com/send?phone=79105489295" target="_blank" rel="noopener noreferrer">+7 910 548-92-95</a></p>
+            <p>Телефон: +7 910 548-92-95</p>
+            <p className="made-by">Made by <a href="#" target="_blank" rel="noopener noreferrer">Waronin</a></p>
           </div>
         </div>
       </div>

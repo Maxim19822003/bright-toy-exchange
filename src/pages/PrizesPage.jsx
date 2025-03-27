@@ -4,31 +4,34 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Stars from '../components/Stars';
 import '../styles/PrizesPage.scss';
+import prize1Image from '../assets/prizes/prize1.jpg';
+import prize2Image from '../assets/prizes/prize2.jpg';
+import prize3Image from '../assets/prizes/prize3.jpg';
 
 // Данные о призах
 const PRIZES_DATA = [
   {
     id: 1,
     name: 'Плюшевый медведь',
-    description: 'Мягкий и уютный плюшевый медведь высотой 40 см',
-    imageUrl: 'https://placehold.co/300x300/FF5733/FFF?text=Медведь',
-    price: 10, // Цена в маленьких игрушках
+    description: 'Мягкий и уютный плюшевый медведь',
+    imageUrl: prize1Image,
+    price: 50, // Цена в маленьких игрушках
     featured: true
   },
   {
     id: 2,
     name: 'Конструктор',
-    description: 'Набор для сборки разных моделей',
-    imageUrl: 'https://placehold.co/300x300/33FF57/FFF?text=Конструктор',
-    price: 15,
+    description: 'Набор для сборки бижютерии',
+    imageUrl: prize2Image,
+    price: 25,
     featured: false
   },
   {
     id: 3,
-    name: 'Машинка на пульте',
-    description: 'Радиоуправляемая машинка',
-    imageUrl: 'https://placehold.co/300x300/5733FF/FFF?text=Машинка',
-    price: 25,
+    name: 'Настольная игра',
+    description: 'Имаджинариум',
+    imageUrl: prize3Image,
+    price: 35,
     featured: true
   },
   {

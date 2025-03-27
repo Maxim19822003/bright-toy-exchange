@@ -6,10 +6,8 @@ import Gallery from './components/Gallery'
 import SocialLinks from './components/SocialLinks'
 import Footer from './components/Footer'
 import Stars from './components/Stars'
-import FontPreloader from './components/FontPreloader'
 import './App.scss'
 import PrizesPage from './pages/PrizesPage'
-import { Link } from 'react-router-dom';
 
 // Компонент боковой машины с игрушками
 const SideMachine = ({ side }) => {
@@ -103,28 +101,18 @@ function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false)
 
   useEffect(() => {
-    // Имитация загрузки
+    // Имитация загрузки с таймером
     setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
-
-    // Проверка загрузки шрифтов
-    const checkFontsLoaded = () => {
-      if (document.body.classList.contains('fonts-loaded')) {
-        setFontsLoaded(true)
-      } else {
-        setTimeout(checkFontsLoaded, 100)
-      }
-    }
-
-    setTimeout(checkFontsLoaded, 200)
-  }, [])
+      setIsLoading(false);
+    }, 1500);
+    
+    // Отметка загрузки шрифтов
+    document.documentElement.classList.add('fonts-loaded');
+    setFontsLoaded(true);
+  }, []);
 
   return (
     <BrowserRouter basename="/bright-toy-exchange">
-      {/* Компонент для предзагрузки шрифтов */}
-      <FontPreloader />
-
       {isLoading ? (
         <div className="loading-screen">
           <div className="claw-loader">
