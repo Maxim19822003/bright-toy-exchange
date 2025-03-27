@@ -156,7 +156,7 @@ const PrizesPage = () => {
             <h1 className="gradient-title">Призы на обмен</h1>
             <p className="section-description">
               Обменивайте собранные игрушки из автоматов-хватаек на крутые призы!
-              Сколько вас есть <span className="user-toys-count">{userToys}</span> игрушек для обмена?
+              Сколько у вас есть <span className="user-toys-count">{userToys}</span> игрушек для обмена?
             </p>
             
             <div className="cart-controls">
