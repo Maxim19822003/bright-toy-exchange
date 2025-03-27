@@ -44,7 +44,7 @@ const Header = () => {
           </span>
         </div>
 
-        // В Header.jsx найдите навигационное меню
+        
 <nav>
   <ul className="nav-list">
     <li className="nav-item">
