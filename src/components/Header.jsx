@@ -44,7 +44,8 @@ const Header = () => {
           </span>
         </div>
 
-        <nav>
+        // В Header.jsx найдите навигационное меню
+<nav>
   <ul className="nav-list">
     <li className="nav-item">
       <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
@@ -57,7 +58,22 @@ const Header = () => {
       </Link>
     </li>
     <li className="nav-item">
-      <Link to="/#contacts" className={location.pathname === "/contacts" ? "nav-link active" : "nav-link"}>
+      {/* Изменить эту ссылку */}
+      <Link 
+        to="/#contacts" 
+        className={location.pathname === "/contacts" ? "nav-link active" : "nav-link"}
+        onClick={(e) => {
+          e.preventDefault();
+          
+          // Если мы уже на главной странице, просто скроллим к контактам
+          if (location.pathname === "/") {
+            document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // Если мы на другой странице, переходим на главную и затем скроллим
+            window.location.href = "/bright-toy-exchange/#contacts";
+          }
+        }}
+      >
         Контакты
       </Link>
     </li>
