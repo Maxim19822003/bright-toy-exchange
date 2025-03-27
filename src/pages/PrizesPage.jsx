@@ -89,7 +89,7 @@ const PrizeCard = ({ prize, onAddToCart }) => {
 // Основной компонент страницы
 const PrizesPage = () => {
   const [cart, setCart] = useState([]);
-  const [userToys, setUserToys] = useState(50); // Предполагаем, что у пользователя есть 50 игрушек
+  const [userToys, setUserToys] = useState(); // Предполагаем, что у пользователя есть 50 игрушек
   const [showCart, setShowCart] = useState(false);
   
   // Добавление в корзину
@@ -156,7 +156,7 @@ const PrizesPage = () => {
             <h1 className="gradient-title">Призы на обмен</h1>
             <p className="section-description">
               Обменивайте собранные игрушки из автоматов-хватаек на крутые призы!
-              У вас есть <span className="user-toys-count">{userToys}</span> игрушек для обмена.
+              Сколько вас есть <span className="user-toys-count">{userToys}</span> игрушек для обмена?
             </p>
             
             <div className="cart-controls">
