@@ -57,7 +57,7 @@ const Header = () => {
       </Link>
     </li>
     <li className="nav-item">
-      <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+      <Link to="/#footer" className={location.pathname === "/#footer" ? "nav-link active" : "nav-link"}>
         Контакты
       </Link>
     </li>
